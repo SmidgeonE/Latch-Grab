@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\LatchGrab.csproj": {}
+    "D:\\GitFiles\\H3VR Stuff\\Latch-Grab\\LatchGrab\\LatchGrab.csproj": {}
   },
   "projects": {
-    "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\LatchGrab.csproj": {
+    "D:\\GitFiles\\H3VR Stuff\\Latch-Grab\\LatchGrab\\LatchGrab.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\LatchGrab.csproj",
+        "projectUniqueName": "D:\\GitFiles\\H3VR Stuff\\Latch-Grab\\LatchGrab\\LatchGrab.csproj",
         "projectName": "LatchGrab",
-        "projectPath": "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\LatchGrab.csproj",
+        "projectPath": "D:\\GitFiles\\H3VR Stuff\\Latch-Grab\\LatchGrab\\LatchGrab.csproj",
         "packagesPath": "C:\\Users\\finla\\.nuget\\packages\\",
-        "outputPath": "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\obj\\",
+        "outputPath": "D:\\GitFiles\\H3VR Stuff\\Latch-Grab\\LatchGrab\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\finla\\AppData\\Roaming\\NuGet\\NuGet.Config",

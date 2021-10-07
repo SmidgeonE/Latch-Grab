@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3TkurFJWtWZxWwWyEpDOj5UGGe6gOUj48L92YZzBkLPovlGU2f1Ru1cdGWmCOBfDoU+qlUvQ40cq5AqartPLUQ==",
+  "dgSpecHash": "+E6C7MSuI9vu0nUaznhqiv71XWuYmRO+jYeKD55oU9wfBY6i1cjz843lUogzY9ZZWI2MgUanLfoDCkGDh59yng==",
   "success": true,
-  "projectFilePath": "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\LatchGrab.csproj",
+  "projectFilePath": "D:\\GitFiles\\H3VR Stuff\\Latch-Grab\\LatchGrab\\LatchGrab.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\finla\\.nuget\\packages\\bepinex.baselib\\5.4.0\\bepinex.baselib.5.4.0.nupkg.sha512",
     "C:\\Users\\finla\\.nuget\\packages\\bepinex.core\\5.4.0\\bepinex.core.5.4.0.nupkg.sha512",
