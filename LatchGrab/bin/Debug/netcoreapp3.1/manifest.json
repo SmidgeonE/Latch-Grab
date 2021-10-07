@@ -1,0 +1,13 @@
+{
+  "guid": "LatchGrab",
+  "version": "1.0.0",
+  "require": "0.3.0",
+  "name": "Latch Grab",
+  "description": "This is a mod",
+  "authors": [ "Smidgeon" ],
+  "assets": {
+    "setup": {
+      "LatchGrab.dll": "deli:assembly"
+    }
+  }
+}

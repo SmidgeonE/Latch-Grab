@@ -1,0 +1,55 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\LatchGrab.csproj": {}
+  },
+  "projects": {
+    "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\LatchGrab.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\LatchGrab.csproj",
+        "projectName": "LatchGrab",
+        "projectPath": "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\LatchGrab.csproj",
+        "packagesPath": "C:\\Users\\finla\\.nuget\\packages\\",
+        "outputPath": "D:\\GitFiles\\H3VR Stuff\\LatchGrab\\LatchGrab\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\finla\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net35"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net35": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net35": {
+          "dependencies": {
+            "Deli": {
+              "target": "Package",
+              "version": "[0.4.2, )"
+            },
+            "HarmonyX": {
+              "target": "Package",
+              "version": "[2.5.5, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
