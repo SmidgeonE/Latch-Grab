@@ -15,45 +15,38 @@ namespace LatchGrab
         private void Awake()
         {
             Harmony.CreateAndPatchAll(typeof(Mod));
-            Debug.Log("Has patched the latch grab mod");
         }
         
         [HarmonyPatch(typeof(ClosedBolt), "UpdateInteraction")]
         [HarmonyPostfix]
         private static void ClosedBoltPatch(ClosedBolt __instance)
         {
+            if (!__instance.IsHeld) return;
             var input = __instance.m_hand.Input;
             bool isPressingDown;
-            Debug.Log("Closed bolt interaction");
 
             if (_controlMode == ControlOptions.CoreControlMode.Standard)
-            {
                 isPressingDown = input.TriggerPressed;
-                Debug.Log("Is pressing down!!!!!!!!");
-            }
             else
                 isPressingDown = input.TriggerPressed;
 
-            if (isPressingDown && __instance.LastPos == ClosedBolt.BoltPos.Rear && __instance.IsBoltLocked() == false)
-            {
-                Debug.Log("Closing bolt");
+            if (isPressingDown && __instance.LastPos >= ClosedBolt.BoltPos.Locked && !__instance.IsBoltLocked())
                 __instance.LockBolt();
-            }
         }
         
-        [HarmonyPatch(typeof(HandgunSlide), "UpdateInteraction")]
+        [HarmonyPatch(typeof(HandgunSlide), "UpdateSlide")]
         [HarmonyPostfix]
         private static void PistolPatch(HandgunSlide __instance)
         {
+            if (!__instance.IsHeld) return;
+
             var handgun = __instance.Handgun;
             
             if (!handgun.HasSlideRelease)
-            {
-                Debug.Log("This handgun does not have a slide");
                 return;
-            }
-            
+
             var input = __instance.m_hand.Input;
+            
             bool isPressingDown;
             
             if (_controlMode == ControlOptions.CoreControlMode.Standard)
@@ -61,18 +54,8 @@ namespace LatchGrab
             else
                 isPressingDown = input.TriggerPressed;
 
-            if (isPressingDown && !handgun.IsSlideCatchEngaged() && __instance.LastPos == HandgunSlide.SlidePos.Rear)
-            {
+            if (isPressingDown && !handgun.IsSlideCatchEngaged() && __instance.LastPos >= HandgunSlide.SlidePos.Locked)
                 handgun.EngageSlideRelease();
-                Debug.Log("Engaging slide relase");
-            }
-            else
-            {
-
-                Debug.Log(isPressingDown);
-                Debug.Log(!handgun.IsSlideCatchEngaged());
-                Debug.Log(__instance.LastPos.ToString());
-            }
         }
         
         
