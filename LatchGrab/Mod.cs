@@ -26,12 +26,15 @@ namespace LatchGrab
             bool isPressingDown;
 
             if (_controlMode == ControlOptions.CoreControlMode.Standard)
-                isPressingDown = input.TriggerPressed;
+                isPressingDown = input.TouchpadWestPressed;
             else
                 isPressingDown = input.TriggerPressed;
 
             if (isPressingDown && __instance.LastPos >= ClosedBolt.BoltPos.Locked && !__instance.IsBoltLocked())
+            {
                 __instance.LockBolt();
+                __instance.Weapon.PlayAudioEvent(FirearmAudioEventType.BoltRelease);
+            }
         }
         
         [HarmonyPatch(typeof(HandgunSlide), "UpdateSlide")]
@@ -46,16 +49,19 @@ namespace LatchGrab
                 return;
 
             var input = __instance.m_hand.Input;
-            
+
             bool isPressingDown;
-            
+
             if (_controlMode == ControlOptions.CoreControlMode.Standard)
-                isPressingDown = input.TriggerPressed;
+                isPressingDown = input.Hand.OtherHand.Input.TouchpadWestPressed;
             else
                 isPressingDown = input.TriggerPressed;
 
             if (isPressingDown && !handgun.IsSlideCatchEngaged() && __instance.LastPos >= HandgunSlide.SlidePos.Locked)
+            {
                 handgun.EngageSlideRelease();
+                __instance.Handgun.PlayAudioEvent(FirearmAudioEventType.BoltRelease);
+            }
         }
         
         
