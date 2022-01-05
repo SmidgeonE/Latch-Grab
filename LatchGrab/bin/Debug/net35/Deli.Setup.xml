@@ -1,0 +1,507 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Deli.Setup</name>
+    </assembly>
+    <members>
+        <member name="T:Deli.Setup.DeliBehaviour">
+            <summary>
+            	A plugin from a mod that runs during <see cref="T:Deli.Setup.SetupStage"/> and any subsequent stages.
+            	Also inherits from <see cref="T:UnityEngine.MonoBehaviour"/>
+            </summary>
+        </member>
+        <member name="P:Deli.Setup.DeliBehaviour.Source">
+            <summary>
+            	The mod this behaviour originated from.
+            </summary>
+        </member>
+        <member name="P:Deli.Setup.DeliBehaviour.Info">
+            <inheritdoc cref="P:Deli.Mod.Info"/>
+        </member>
+        <member name="P:Deli.Setup.DeliBehaviour.Resources">
+            <inheritdoc cref="P:Deli.Mod.Resources"/>
+        </member>
+        <member name="P:Deli.Setup.DeliBehaviour.Config">
+            <inheritdoc cref="P:Deli.Mod.Config"/>
+        </member>
+        <member name="P:Deli.Setup.DeliBehaviour.Logger">
+            <inheritdoc cref="P:Deli.Mod.Logger"/>
+        </member>
+        <member name="P:Deli.Setup.DeliBehaviour.Stages">
+            <summary>
+            	Invoked when stages are in progress.
+            </summary>
+        </member>
+        <member name="M:Deli.Setup.DeliBehaviour.#ctor">
+            <summary>
+            	Creates an instance of <see cref="T:Deli.Setup.DeliBehaviour"/>
+            </summary>
+        </member>
+        <member name="M:Deli.Setup.DeliBehaviour.Run(Deli.Stage)">
+            <inheritdoc cref="M:Deli.IDeliPlugin.Run(Deli.Stage)"/>
+        </member>
+        <member name="T:Deli.Setup.DeliBehaviour.StageEvents">
+            <summary>
+            	Represents the specific possible stages a <see cref="T:Deli.Setup.DeliBehaviour"/> can process
+            </summary>
+        </member>
+        <member name="E:Deli.Setup.DeliBehaviour.StageEvents.Setup">
+            <summary>
+            	Invoked when the <see cref="T:Deli.Setup.SetupStage"/> is in progress.
+            </summary>
+        </member>
+        <member name="E:Deli.Setup.DeliBehaviour.StageEvents.Runtime">
+            <summary>
+            	Invoked when the <see cref="T:Deli.Runtime.RuntimeStage"/> is in progress.
+            </summary>
+        </member>
+        <member name="M:Deli.Setup.DeliBehaviour.StageEvents.Run(Deli.Stage)">
+            <inheritdoc cref="M:Deli.IDeliPlugin.Run(Deli.Stage)"/>
+        </member>
+        <member name="T:Deli.Setup.SetupStage">
+            <summary>
+            	The immediate stage of the loading sequence which allows for patched assemblies to be used
+            </summary>
+        </member>
+        <member name="P:Deli.Setup.SetupStage.SetupAssetLoaders">
+            <summary>
+            	Asset loaders specific to this stage
+            </summary>
+        </member>
+        <member name="T:Deli.Runtime.DelayedReaderCollection">
+            <summary>
+            	A collection of <see cref="T:Deli.Runtime.DelayedReader`1"/>s that can be added to and retrieved
+            </summary>
+        </member>
+        <member name="M:Deli.Runtime.DelayedReaderCollection.#ctor(BepInEx.Logging.ManualLogSource)">
+            <summary>
+            	Creates an instance of <see cref="T:Deli.Runtime.DelayedReaderCollection"/>
+            </summary>
+            <param name="logger">The logger to use, in case a warning needs to be displayed</param>
+        </member>
+        <member name="M:Deli.Runtime.DelayedReaderCollection.Add``1(Deli.Runtime.DelayedReader{``0})">
+            <summary>
+            	Adds a reader to the collection
+            </summary>
+            <param name="reader">The reader to add</param>
+            <typeparam name="T">The type the reader is responsible for</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.DelayedReaderCollection.Get``1">
+            <summary>
+            	Gets a reader, throwing if it does not exist
+            </summary>
+            <typeparam name="T">The type to get the reader for</typeparam>
+            <exception cref="T:System.Collections.Generic.KeyNotFoundException">Reader was not present</exception>
+        </member>
+        <member name="M:Deli.Runtime.DelayedReaderCollection.TryGet``1(Deli.Runtime.DelayedReader{``0}@)">
+            <summary>
+            	Tries to get a reader, returning a success <see langword="bool"/> instead of throwing
+            </summary>
+            <param name="reader">The reader, if it was found</param>
+            <typeparam name="T">The type to get the reader for</typeparam>
+        </member>
+        <member name="T:Deli.Runtime.DelayedTypedFileHandle`1">
+            <summary>
+            	A file handle which supports delayed deserialization to a generic type
+            </summary>
+            <typeparam name="T">The type to deserialize to</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.DelayedTypedFileHandle`1.#ctor(Deli.VFS.IFileHandle,Deli.Runtime.DelayedReader{`0})">
+            <summary>
+            	Creates an instance of <see cref="T:Deli.Runtime.DelayedTypedFileHandle`1"/>
+            </summary>
+            <param name="handle">The raw file handle to deserialize</param>
+            <param name="reader">The delayed reader responsible for deserialization</param>
+        </member>
+        <member name="M:Deli.Runtime.DelayedTypedFileHandle`1.Read">
+            <inheritdoc cref="T:Deli.Runtime.DelayedTypedFileHandle`1"/>
+        </member>
+        <member name="T:Deli.Runtime.DelayedReader`1">
+            <summary>
+            	A deserializer that is performed over multiple frames.
+            </summary>
+            <typeparam name="T">The type to deserialize to.</typeparam>
+        </member>
+        <member name="T:Deli.Runtime.DelayedAssetLoader">
+            <summary>
+            	An asset loader that operates over multiple frames.
+            </summary>
+        </member>
+        <member name="T:Deli.Runtime.RuntimeStage">
+            <summary>
+            	The stage of the loading sequence which runs over several frames
+            </summary>
+        </member>
+        <member name="P:Deli.Runtime.RuntimeStage.RuntimeAssetLoaders">
+            <summary>
+            	Asset loaders specific to this stage
+            </summary>
+        </member>
+        <member name="P:Deli.Runtime.RuntimeStage.DelayedReaders">
+            <summary>
+            	The collection of all the <see cref="T:Deli.Runtime.DelayedReader`1"/>s publicly available. This does not include wrappers for <see cref="T:Deli.Immediate.ImmediateReader`1"/>.
+            	For getting readers including <see cref="T:Deli.Immediate.ImmediateReader`1"/> wrappers, use <seealso cref="M:Deli.Runtime.RuntimeStage.GetReader``1"/>.
+            </summary>
+        </member>
+        <member name="P:Deli.Runtime.RuntimeStage.VersionCheckers">
+            <summary>
+            	The collection of all version checkers for all supported domains
+            </summary>
+        </member>
+        <member name="M:Deli.Runtime.RuntimeStage.GetReader``1">
+            <summary>
+            	Gets a reader from <seealso cref="P:Deli.Runtime.RuntimeStage.DelayedReaders"/>, otherwise gets a reader from <see cref="P:Deli.Stage.ImmediateReaders"/> and wraps it.
+            </summary>
+            <typeparam name="T">The type to deserialize.</typeparam>
+        </member>
+        <member name="T:Deli.Runtime.VersionCheckerCollection">
+            <summary>
+            	A collection of <see cref="T:Deli.Runtime.VersionChecker"/>s, keyed by domain
+            </summary>
+        </member>
+        <member name="M:Deli.Runtime.VersionCheckerCollection.TryGet(System.String,Deli.Runtime.VersionChecker@)">
+            <summary>
+            	Gets a checker, if it exists, from this collection. Otherwise, returns <see langword="false"/>.
+            </summary>
+            <param name="domain">The domain the checker corresponds to</param>
+            <param name="checker">The checker, if it was found</param>
+            <returns></returns>
+        </member>
+        <member name="P:Deli.Runtime.VersionCheckerCollection.Item(System.String)">
+            <summary>
+            	Sets a domain to use the given checker
+            </summary>
+            <param name="domain">The domain the checker is responsible for</param>
+            <exception cref="T:System.ArgumentException">A checker is already registered for the domain</exception>
+        </member>
+        <member name="M:Deli.Runtime.VersionCheckerCollection.GetEnumerator">
+            <summary>
+            	Enumerates over all the checkers and their corresponding domains
+            </summary>
+        </member>
+        <member name="T:Deli.Runtime.VersionChecker">
+            <summary>
+            	Checks the version of a mod from a URL's path.
+            </summary>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.ExtYieldInstruction">
+            <summary>
+            	Extension methods pertaining to <see cref="T:UnityEngine.YieldInstruction"/>
+            </summary>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.CallbackWith(UnityEngine.AsyncOperation,System.Action)">
+            <summary>
+            	Creates a super yield instruction which awaits this void operation, then invokes a callback
+            </summary>
+            <param name="this"></param>
+            <param name="callback">The callback to invoke after awaiting the operation</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.CallbackWith``1(UnityEngine.AsyncOperation,System.Func{``0})">
+            <summary>
+            	Creates a super yield instruction which awaits this async operation, then returns the result of a callback
+            </summary>
+            <param name="this"></param>
+            <param name="callback">The result of the super instruction</param>
+            <typeparam name="TResult">The type of the super instruction's result</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith(UnityEngine.AsyncOperation,System.Func{UnityEngine.AsyncOperation})">
+             <summary>
+             	Creates a super yield instruction which awaits this void operation, then awaits a void operation determined by a callback
+            
+             	<para>
+             		If you wish for a return value, use <seealso cref="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith``2(UnityEngine.AsyncOperation,System.Func{``0},System.Func{``0,``1})"/>.
+             	</para>
+             </summary>
+             <param name="this"></param>
+             <param name="continuation">The void operation that the super instruction should await</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith``2(UnityEngine.AsyncOperation,System.Func{``0},System.Func{``0,``1})">
+            <summary>
+            	Creates a super yield instruction which awaits this void operation, then awaits a generic operation determined by a callback, and finally returns the result of
+            		a callback.
+            </summary>
+            <param name="this"></param>
+            <param name="continuation">The operation that the super instruction should await</param>
+            <param name="result">The result of the super instruction</param>
+            <typeparam name="TOperation">The type of the <see cref="T:UnityEngine.AsyncOperation"/> to await</typeparam>
+            <typeparam name="TResult">The type of the super instruction's result</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith(UnityEngine.AsyncOperation,System.Func{UnityEngine.CustomYieldInstruction})">
+            <summary>
+            	Creates a super yield instruction which awaits this async operation, then executes an instruction determined by a callback
+            </summary>
+            <param name="this"></param>
+            <param name="continuation">The instruction that the super instruction should execute</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith``1(UnityEngine.AsyncOperation,System.Func{Deli.Runtime.Yielding.ResultYieldInstruction{``0}})">
+            <summary>
+            	Creates a super yield instruction which awaits this async operation, then executes an instruction determined by a callback, and finally returns the result of the
+            	callback's instruction
+            </summary>
+            <param name="this"></param>
+            <param name="continuation">The instruction that the super instruction should execute</param>
+            <typeparam name="TResult">The type of the super instruction's result</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.CallbackWith(UnityEngine.CustomYieldInstruction,System.Action)">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then invokes a callback
+            </summary>
+            <param name="this"></param>
+            <param name="callback">The callback to invoke after executing the instruction</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.CallbackWith``1(UnityEngine.CustomYieldInstruction,System.Func{``0})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then returns the result of a callback
+            </summary>
+            <param name="this"></param>
+            <param name="callback">The result of the super instruction</param>
+            <typeparam name="TResult">The type of the super instruction's result</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith(UnityEngine.CustomYieldInstruction,System.Func{UnityEngine.AsyncOperation})">
+             <summary>
+            		Creates a super yield instruction which executes this instruction, then awaits a void operation determined by a callback
+            
+            		<para>
+             		If you wish for a return value, use <seealso cref="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith``2(UnityEngine.AsyncOperation,System.Func{``0},System.Func{``0,``1})"/>.
+             	</para>
+             </summary>
+             <param name="this"></param>
+             <param name="continuation">The void operation that the super instruction should await</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith``2(UnityEngine.CustomYieldInstruction,System.Func{``0},System.Func{``0,``1})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then awaits a generic operation determined by a callback, and finally returns the result of
+            		a callback.
+            </summary>
+            <param name="this"></param>
+            <param name="continuation">The operation that the super instruction should await</param>
+            <param name="result">The result of the super instruction</param>
+            <typeparam name="TOperation">The type of the <see cref="T:UnityEngine.AsyncOperation"/> to await</typeparam>
+            <typeparam name="TResult">The type of the super instruction's result</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith(UnityEngine.CustomYieldInstruction,System.Func{UnityEngine.CustomYieldInstruction})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then executes an instruction determined by a callback
+            </summary>
+            <param name="this"></param>
+            <param name="continuation">The instruction that the super instruction should execute</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ExtYieldInstruction.ContinueWith``1(UnityEngine.CustomYieldInstruction,System.Func{Deli.Runtime.Yielding.ResultYieldInstruction{``0}})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then executes an instruction determined by a callback, and finally returns the result of the
+            	callback's instruction
+            </summary>
+            <param name="this"></param>
+            <param name="continuation">The instruction that the super instruction should execute</param>
+            <typeparam name="TResult">The type of the super instruction's result</typeparam>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.BeginAsync`1">
+            <summary>
+            	A method which begins an async pattern
+            </summary>
+            <param name="self">The object which implements the pattern</param>
+            <param name="callback">The callback to pass to the begin method of the pattern</param>
+            <param name="state">The state to pass to the begin method of the pattern</param>
+            <typeparam name="TSelf">The type of the object which implements the pattern</typeparam>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.EndAsync`1">
+            <summary>
+            	A method which ends a void async pattern
+            </summary>
+            <param name="self">The object which implements the pattern</param>
+            <param name="result">The result to pass to the end method of the pattern</param>
+            <typeparam name="TSelf">The type of the object which implements the pattern</typeparam>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.EndAsync`2">
+            <summary>
+            	A method which ends a non-void async pattern
+            </summary>
+            <param name="self">The object which implements the pattern</param>
+            <param name="result">The result to pass to the end method of the pattern</param>
+            <typeparam name="TSelf">The type of the object which implements the pattern</typeparam>
+            <typeparam name="TResult">The type of the return value of the pattern</typeparam>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.AsyncYieldInstruction`1">
+            <summary>
+            	A yield instruction which awaits a void async pattern (begin/end pattern)
+            </summary>
+            <typeparam name="TSelf">The type of the object which performs the pattern</typeparam>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.AsyncYieldInstruction`1.keepWaiting">
+            <inheritdoc cref="P:UnityEngine.CustomYieldInstruction.keepWaiting"/>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.AsyncYieldInstruction`1.#ctor(`0,Deli.Runtime.Yielding.BeginAsync{`0},Deli.Runtime.Yielding.EndAsync{`0})">
+            <summary>
+            	Creates an instance of <see cref="T:Deli.Runtime.Yielding.AsyncYieldInstruction`1"/>
+            </summary>
+            <param name="self">The object which performs the pattern</param>
+            <param name="begin">The method to begin the pattern</param>
+            <param name="end">The method to end the void pattern</param>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.AsyncYieldInstruction`2">
+            <summary>
+            	A yield instruction which awaits a non-void async pattern (begin/end pattern)
+            </summary>
+            <typeparam name="TSelf">The type of the object which performs the pattern</typeparam>
+            <typeparam name="TResult">The type of the return value of the pattern</typeparam>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.AsyncYieldInstruction`2.keepWaiting">
+            <inheritdoc cref="P:UnityEngine.CustomYieldInstruction.keepWaiting"/>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.AsyncYieldInstruction`2.Result">
+            <inheritdoc cref="P:Deli.Runtime.Yielding.ResultYieldInstruction`1.Result"/>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.AsyncYieldInstruction`2.#ctor(`0,Deli.Runtime.Yielding.BeginAsync{`0},Deli.Runtime.Yielding.EndAsync{`0,`1})">
+            <summary>
+            	Creates an instance of <see cref="T:Deli.Runtime.Yielding.AsyncYieldInstruction`2"/>
+            </summary>
+            <param name="self">The object which performs the pattern</param>
+            <param name="begin">The method to begin the pattern</param>
+            <param name="end">The method to end the non-void pattern</param>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.EndAsyncOperation`2">
+            <summary>
+            	A method which extracts a result from an async operation
+            </summary>
+            <param name="operation">The operation to extract the result from</param>
+            <typeparam name="TOperation">The type of the operation</typeparam>
+            <typeparam name="TResult">The type of the result of <typeparamref name="TOperation"/></typeparam>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.AsyncOperationYieldInstruction">
+            <summary>
+            	A yield instruction which awaits an <see cref="T:UnityEngine.AsyncOperation"/>
+            </summary>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.AsyncOperationYieldInstruction.keepWaiting">
+            <inheritdoc cref="P:UnityEngine.CustomYieldInstruction.keepWaiting"/>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.AsyncOperationYieldInstruction.#ctor(UnityEngine.AsyncOperation)">
+            <summary>
+            	Creates an instance of <see cref="T:Deli.Runtime.Yielding.AsyncYieldInstruction`1"/>
+            </summary>
+            <param name="operation">The operation to await</param>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.AsyncOperationYieldInstruction`2">
+            <summary>
+            	A yield instruction which awaits a generic <see cref="T:UnityEngine.AsyncOperation"/>
+            </summary>
+            <typeparam name="TOperation">The type of the <see cref="T:UnityEngine.AsyncOperation"/></typeparam>
+            <typeparam name="TResult">The type of the result of <typeparamref name="TOperation"/></typeparam>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.AsyncOperationYieldInstruction`2.keepWaiting">
+            <inheritdoc cref="P:UnityEngine.CustomYieldInstruction.keepWaiting"/>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.AsyncOperationYieldInstruction`2.Result">
+            <inheritdoc cref="P:Deli.Runtime.Yielding.ResultYieldInstruction`1.Result"/>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.AsyncOperationYieldInstruction`2.#ctor(`0,Deli.Runtime.Yielding.EndAsyncOperation{`0,`1})">
+            <summary>
+            	Creates an instance of <see cref="T:Deli.Runtime.Yielding.AsyncOperationYieldInstruction`2"/>
+            </summary>
+            <param name="operation">The operation to await</param>
+            <param name="end">The method to get the result of the operation</param>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.DummyYieldInstruction">
+            <summary>
+            	A <see cref="T:UnityEngine.CustomYieldInstruction"/> which completes immediately
+            </summary>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.DummyYieldInstruction.keepWaiting">
+            <inheritdoc cref="P:UnityEngine.CustomYieldInstruction.keepWaiting"/>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.DummyYieldInstruction`1">
+            <summary>
+            	A <see cref="T:Deli.Runtime.Yielding.ResultYieldInstruction`1"/> which completes immediately
+            </summary>
+            <typeparam name="T">The type of the result</typeparam>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.DummyYieldInstruction`1.keepWaiting">
+            <inheritdoc cref="P:UnityEngine.CustomYieldInstruction.keepWaiting"/>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.DummyYieldInstruction`1.Result">
+            <inheritdoc cref="P:Deli.Runtime.Yielding.ResultYieldInstruction`1.Result"/>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.DummyYieldInstruction`1.#ctor(`0)">
+            <summary>
+            	Creates an instance of <see cref="T:Deli.Runtime.Yielding.DummyYieldInstruction`1"/>
+            </summary>
+            <param name="result">The result that this instruction should house</param>
+        </member>
+        <member name="T:Deli.Runtime.Yielding.ResultYieldInstruction`1">
+            <summary>
+            	A yield instruction that contains a result on completion.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+        </member>
+        <member name="P:Deli.Runtime.Yielding.ResultYieldInstruction`1.Result">
+            <summary>
+            	The result of operation.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">The operation has not been completed.</exception>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ResultYieldInstruction`1.CallbackWith(System.Action{`0})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then invokes a callback, and finally returns the result of this instruction
+            </summary>
+            <param name="callback">The callback to invoke after this instruction</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ResultYieldInstruction`1.CallbackWith``1(System.Func{`0,``0})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then returns the result of a callback
+            </summary>
+            <param name="callback">The result of the super instruction</param>
+            <typeparam name="TNext">The type of the super instruction's result</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ResultYieldInstruction`1.ContinueWith(System.Func{`0,UnityEngine.AsyncOperation})">
+             <summary>
+            		Creates a super yield instruction which executes this instruction, then awaits a void operation determined by a callback, and finally returns the result of this
+            		instruction.
+            
+            		<para>
+            			If you wish for the return value to be data from the <see cref="T:UnityEngine.AsyncOperation"/>, use <seealso cref="M:Deli.Runtime.Yielding.ResultYieldInstruction`1.ContinueWith``2(System.Func{`0,``0},System.Func{``0,``1})"/>.
+            		</para>
+             </summary>
+             <param name="continuation">The void operation that the super instruction should await</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ResultYieldInstruction`1.ContinueWith``2(System.Func{`0,``0},System.Func{``0,``1})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then awaits a generic operation determined by a callback, and finally returns the result of a
+            	callback.
+            </summary>
+            <param name="continuation">The operation that the super instruction should await</param>
+            <param name="result">The result of the super instruction</param>
+            <typeparam name="TOperation">The type of the <see cref="T:UnityEngine.AsyncOperation"/> to await</typeparam>
+            <typeparam name="TNext">The type of the super instruction's result</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ResultYieldInstruction`1.ContinueWith(System.Func{`0,UnityEngine.CustomYieldInstruction})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then executes an instruction determined by a callback, and finally returns the result of this
+            	instruction.
+            </summary>
+            <param name="continuation">The instruction that the super instruction should execute</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ResultYieldInstruction`1.ContinueWith``1(System.Func{`0,Deli.Runtime.Yielding.ResultYieldInstruction{``0}})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then executes an instruction determined by a callback, and finally returns the result of the
+            	callback's instruction
+            </summary>
+            <param name="continuation">The instruction that the super instruction should execute</param>
+            <typeparam name="TNext">The type of the super instruction's result</typeparam>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ResultYieldInstruction`1.ContinueWith(Deli.Runtime.Yielding.BeginAsync{`0},Deli.Runtime.Yielding.EndAsync{`0})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then executes an async pattern, and finally returns the result of this instruction
+            </summary>
+            <param name="begin">The method to begin the async operation</param>
+            <param name="end">The method to end the void async operation</param>
+        </member>
+        <member name="M:Deli.Runtime.Yielding.ResultYieldInstruction`1.ContinueWith``1(Deli.Runtime.Yielding.BeginAsync{`0},Deli.Runtime.Yielding.EndAsync{`0,``0})">
+            <summary>
+            	Creates a super yield instruction which executes this instruction, then executes an async pattern, and finally returns the result of the async pattern
+            </summary>
+            <param name="begin">The method to begin the async operation</param>
+            <param name="end">The method to end the non-void async operation</param>
+            <typeparam name="TNext">The type of the super instruction's result</typeparam>
+        </member>
+    </members>
+</doc>

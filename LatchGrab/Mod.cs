@@ -15,6 +15,7 @@ namespace LatchGrab
         private void Awake()
         {
             Harmony.CreateAndPatchAll(typeof(Mod));
+            Debug.Log("Has patched the latch grab mod");
         }
         
         [HarmonyPatch(typeof(ClosedBolt), "UpdateInteraction")]
@@ -23,14 +24,21 @@ namespace LatchGrab
         {
             var input = __instance.m_hand.Input;
             bool isPressingDown;
-            
+            Debug.Log("Closed bolt interaction");
+
             if (_controlMode == ControlOptions.CoreControlMode.Standard)
-                isPressingDown = input.TouchpadSouthPressed && input.TouchpadPressed;
+            {
+                isPressingDown = input.TriggerPressed;
+                Debug.Log("Is pressing down!!!!!!!!");
+            }
             else
                 isPressingDown = input.TriggerPressed;
 
             if (isPressingDown && __instance.LastPos == ClosedBolt.BoltPos.Rear && __instance.IsBoltLocked() == false)
+            {
+                Debug.Log("Closing bolt");
                 __instance.LockBolt();
+            }
         }
         
         [HarmonyPatch(typeof(HandgunSlide), "UpdateInteraction")]
@@ -49,12 +57,22 @@ namespace LatchGrab
             bool isPressingDown;
             
             if (_controlMode == ControlOptions.CoreControlMode.Standard)
-                isPressingDown = input.TouchpadSouthPressed && input.TouchpadPressed;
+                isPressingDown = input.TriggerPressed;
             else
                 isPressingDown = input.TriggerPressed;
 
             if (isPressingDown && !handgun.IsSlideCatchEngaged() && __instance.LastPos == HandgunSlide.SlidePos.Rear)
+            {
                 handgun.EngageSlideRelease();
+                Debug.Log("Engaging slide relase");
+            }
+            else
+            {
+
+                Debug.Log(isPressingDown);
+                Debug.Log(!handgun.IsSlideCatchEngaged());
+                Debug.Log(__instance.LastPos.ToString());
+            }
         }
         
         

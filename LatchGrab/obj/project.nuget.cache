@@ -1,20 +1,29 @@
 {
   "version": 2,
-  "dgSpecHash": "+E6C7MSuI9vu0nUaznhqiv71XWuYmRO+jYeKD55oU9wfBY6i1cjz843lUogzY9ZZWI2MgUanLfoDCkGDh59yng==",
+  "dgSpecHash": "9nyJoKWlTsx0ghJNWr6X97nWhEpkaROVpm/sjhS0zxlRHUhIYQGsSeJ5cIjU/IGxo10fY+rMH3VKcGxhZVaJZw==",
   "success": true,
-  "projectFilePath": "D:\\GitFiles\\H3VR Stuff\\Latch-Grab\\LatchGrab\\LatchGrab.csproj",
+  "projectFilePath": "D:\\GitFiles\\Latch-Grab\\LatchGrab\\LatchGrab.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\finla\\.nuget\\packages\\bepinex.baselib\\5.4.0\\bepinex.baselib.5.4.0.nupkg.sha512",
-    "C:\\Users\\finla\\.nuget\\packages\\bepinex.core\\5.4.0\\bepinex.core.5.4.0.nupkg.sha512",
-    "C:\\Users\\finla\\.nuget\\packages\\deli\\0.4.2\\deli.0.4.2.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\bepinex.baselib\\5.4.17\\bepinex.baselib.5.4.17.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\bepinex.core\\6.0.0-be.534\\bepinex.core.6.0.0-be.534.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\bepinex.unity\\6.0.0-be.534\\bepinex.unity.6.0.0-be.534.nupkg.sha512",
     "C:\\Users\\finla\\.nuget\\packages\\deli.newtonsoft.json\\12.0.3\\deli.newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\finla\\.nuget\\packages\\deli.patcher\\0.4.2\\deli.patcher.0.4.2.nupkg.sha512",
     "C:\\Users\\finla\\.nuget\\packages\\dotnetzip\\1.12.0\\dotnetzip.1.12.0.nupkg.sha512",
-    "C:\\Users\\finla\\.nuget\\packages\\harmonyx\\2.5.5\\harmonyx.2.5.5.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\h3vr.gamelibs\\0.101.1-r.0\\h3vr.gamelibs.0.101.1-r.0.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\harmonyx\\2.7.0\\harmonyx.2.7.0.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\jquery\\2.1.1\\jquery.2.1.1.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net35\\1.0.2\\microsoft.netframework.referenceassemblies.net35.1.0.2.nupkg.sha512",
     "C:\\Users\\finla\\.nuget\\packages\\mono.cecil\\0.10.4\\mono.cecil.0.10.4.nupkg.sha512",
-    "C:\\Users\\finla\\.nuget\\packages\\monomod.runtimedetour\\21.8.19.1\\monomod.runtimedetour.21.8.19.1.nupkg.sha512",
-    "C:\\Users\\finla\\.nuget\\packages\\monomod.utils\\21.8.19.1\\monomod.utils.21.8.19.1.nupkg.sha512",
-    "C:\\Users\\finla\\.nuget\\packages\\unityengine.core\\5.6.0\\unityengine.core.5.6.0.nupkg.sha512"
+    "C:\\Users\\finla\\.nuget\\packages\\monomod.runtimedetour\\21.12.13.1\\monomod.runtimedetour.21.12.13.1.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\monomod.utils\\21.12.13.1\\monomod.utils.21.12.13.1.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\sampledependency\\1.0.0\\sampledependency.1.0.0.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\semanticversioning\\2.0.0\\semanticversioning.2.0.0.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\unityengine\\5.6.1\\unityengine.5.6.1.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\unityengine.dll\\1.0.0\\unityengine.dll.1.0.0.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\unityengine.modules\\2021.2.7\\unityengine.modules.2021.2.7.nupkg.sha512",
+    "C:\\Users\\finla\\.nuget\\packages\\unityengine5\\5.5.0\\unityengine5.5.5.0.nupkg.sha512"
   ],
   "logs": []
 }
