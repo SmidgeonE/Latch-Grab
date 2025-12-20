@@ -1,14 +1,13 @@
-﻿using System;
-using System.Runtime.Remoting.Services;
-using Deli.Setup;
+﻿using BepInEx;
 using FistVR;
 using HarmonyLib;
 using UnityEngine;
-using Valve.VR;
 
 namespace LatchGrab
 {
-    public class Mod : DeliBehaviour
+    [BepInPlugin("dll.smidgeon.latchgrab", "LatchGrab", "1.0.0")]
+    [BepInProcess("h3vr.exe")]
+    public class Mod : BaseUnityPlugin
     {
         private static ControlOptions.CoreControlMode _controlMode;
         
@@ -24,7 +23,7 @@ namespace LatchGrab
             if (!__instance.IsHeld) return;
             var input = __instance.m_hand.Input;
             bool isPressingDown;
-
+            
             if (_controlMode == ControlOptions.CoreControlMode.Standard)
                 isPressingDown = input.TouchpadWestPressed;
             else
