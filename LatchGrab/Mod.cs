@@ -1,7 +1,6 @@
 ﻿using BepInEx;
 using FistVR;
 using HarmonyLib;
-using Mono.Cecil.Cil;
 using UnityEngine;
 
 namespace LatchGrab
