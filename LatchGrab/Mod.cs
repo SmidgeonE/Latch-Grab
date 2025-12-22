@@ -46,7 +46,7 @@ namespace LatchGrab
             if (__instance.CurPos != ClosedBoltHandle.HandlePos.Rear) return;
             
             // Other hand due to other hand holding the actual grip
-            var input = __instance.m_hand.OtherHand.Input;
+            var input = __instance.m_hand.Input;
 
             __instance.Weapon.IsBoltCatchButtonHeld = input.TriggerPressed;
         }
