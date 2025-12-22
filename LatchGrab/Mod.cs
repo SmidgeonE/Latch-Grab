@@ -1,6 +1,7 @@
 ﻿using BepInEx;
 using FistVR;
 using HarmonyLib;
+using Mono.Cecil.Cil;
 using UnityEngine;
 
 namespace LatchGrab
@@ -35,6 +36,22 @@ namespace LatchGrab
                 __instance.Weapon.PlayAudioEvent(FirearmAudioEventType.BoltRelease);
             }
         }
+        
+        [HarmonyPatch(typeof(ClosedBoltHandle), "UpdateHandle")]
+        [HarmonyPostfix]
+        private static void StreamlinedBoltCatchFix(ClosedBoltHandle __instance)
+        {
+            if (!__instance.Weapon.HasBoltCatchButton) return;
+            if (_controlMode != ControlOptions.CoreControlMode.Streamlined) return;
+            if (!__instance.IsHeld) return;
+            if (__instance.CurPos != ClosedBoltHandle.HandlePos.Rear) return;
+            
+            // Other hand due to other hand holding the actual grip
+            var input = __instance.m_hand.OtherHand.Input;
+
+            __instance.Weapon.IsBoltCatchButtonHeld = input.TriggerPressed;
+        }
+        
         
         [HarmonyPatch(typeof(HandgunSlide), "UpdateSlide")]
         [HarmonyPostfix]
