@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace LatchGrab
 {
-    [BepInPlugin("dll.smidgeon.latchgrab", "LatchGrab", "1.0.0")]
+    [BepInPlugin("dll.smidgeon.latchgrab", "LatchGrab", "1.0.3")]
     [BepInProcess("h3vr.exe")]
     public class Mod : BaseUnityPlugin
     {
@@ -87,7 +87,6 @@ namespace LatchGrab
         private static void InitialOptionsGrabPatch(GameOptions __instance)
         {
             _controlMode = __instance.ControlOptions.CCM;
-            Debug.Log("mode set to : " + _controlMode);
         }
         
         [HarmonyPatch(typeof(GameOptions), "SaveToFile")]
